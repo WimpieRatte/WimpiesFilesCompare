@@ -3,7 +3,8 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow, # Application and Window
                              QPushButton, QLabel, # buttons & labels (can handle images too, via QPixmap below)
                              QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, # widgets and layout managers
                              QCheckBox, # Checkbox support
-                             QRadioButton, QButtonGroup) # Radiobuttons and their groupings
+                             QRadioButton, QButtonGroup, # Radiobuttons and their groupings
+                             QLineEdit)
 from PyQt5.QtGui import (QIcon, # Work with Icons
                          QFont, # Set Fonts (E.g: in labels)
                          QPixmap) # Handle images/pictures
@@ -27,10 +28,11 @@ class MainWindow(QMainWindow):
         self.radio5 = QRadioButton("Online", self)
         self.button_group1 = QButtonGroup(self)
         self.button_group2 = QButtonGroup(self)
+        self.line_edit = QLineEdit(self)
         self.initUI()
         
     # Initialise User Interface Style Sheets and Geometries (Just cleaner to do this in a seperate function)
-    def initUI(self):         
+    def initUI(self):
         self.button.setGeometry(150, 200, 200, 100)
         self.button.setStyleSheet("font-size: 30px;")
         self.button.clicked.connect(self.on_click) # connect the button.clicked signal (event) to the self.on_click slot (function)
@@ -68,6 +70,12 @@ class MainWindow(QMainWindow):
         self.radio4.toggled.connect(self.radio_button_changed)
         self.radio5.toggled.connect(self.radio_button_changed)
         
+        # Line edits:
+        self.line_edit.setGeometry(10, 10, 200, 40)
+        self.line_edit.setStyleSheet("font-size: 25px;"
+                                     "font-family: Arial;")
+        self.line_edit.setPlaceholderText("Enter your name")
+        
     # Button click:
     def on_click(self):
         print("Button clicked!")
@@ -75,6 +83,9 @@ class MainWindow(QMainWindow):
         self.button.setDisabled(True) # how to disable button
         
         self.label.setText("Goodbye")
+        
+        text = self.line_edit.text()
+        print(f"Hello {text}")
             
     # Checkbox check:
     def checkbox_changed(self, state):
