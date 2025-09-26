@@ -1,6 +1,8 @@
 # Description:
 Simple application for comparing files... while also learning Python 😊.
+
 Status: Done
+
 Future Improvements doable:
 - Save last selected folders in settings file
 - Add option to open folders in explorer
