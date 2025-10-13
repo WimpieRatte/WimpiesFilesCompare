@@ -1,5 +1,5 @@
 # Description:
-Simple application for comparing files... while also learning Python 😊.
+Simple application for comparing the files in two folders... developed while learning Python.
 
 Status: Done
 
